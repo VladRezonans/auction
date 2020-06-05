@@ -1,7 +1,7 @@
 import { Entity, Index, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-class Lot {
+export class Lot {
     @PrimaryGeneratedColumn()
     public id: string;
 
@@ -36,5 +36,3 @@ class Lot {
     @Column()
     public endAt: Date;
 }
-
-export default Lot;

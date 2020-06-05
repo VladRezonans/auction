@@ -1,7 +1,7 @@
 import { Entity, Index, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-class Order {
+export class Order {
     @PrimaryGeneratedColumn()
     public id: string;
 
@@ -22,5 +22,3 @@ class Order {
     @Column({ default: 0 })
     public status: number;
 }
-
-export default Order;

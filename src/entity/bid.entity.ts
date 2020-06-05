@@ -1,7 +1,7 @@
 import { Entity, Index, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-class Bid {
+export class Bid {
     @PrimaryGeneratedColumn()
     public id: string;
 
@@ -19,5 +19,3 @@ class Bid {
     @Column({ default: 0 })
     public proposedPrice: number;
 }
-
-export default Bid;
