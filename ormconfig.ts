@@ -1,4 +1,4 @@
-{
+module.exports = {
   "type": "postgres",
   "host": "localhost",
   "port": 5432,
@@ -16,4 +16,4 @@
   "cli": {
     "migrationsDir": "src/migrations"
   }
-}
+};
