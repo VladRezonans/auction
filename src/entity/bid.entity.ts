@@ -20,4 +20,4 @@ class Bid {
     public proposedPrice: number;
 }
 
-export default Lot;
+export default Bid;
