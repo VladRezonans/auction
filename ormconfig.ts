@@ -1,4 +1,4 @@
-{
+module.exports = {
   "type": "postgres",
   "host": "localhost",
   "port": 5432,
@@ -6,14 +6,10 @@
   "password": "postgres",
   "database": "auction",
   "synchronize": false,
-  "logging": false,
-  "entities": [
-    "src/entity/*.ts"
-  ],
-  "migrations": [
-    "src/migrations/*.ts"
-  ],
+  "logging": true,
+  "entities": ['dist/entity/*.js'],
+  "migrations": ['/migrations/*.{ts,js}'],
   "cli": {
     "migrationsDir": "src/migrations"
   }
-}
+};
