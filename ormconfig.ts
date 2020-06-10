@@ -1,2 +1,2 @@
-import * as ormConfig from './src/ormconfig.service';
-module.exports = ormConfig;
+const config = require('./src/db-config');
+module.exports = config;

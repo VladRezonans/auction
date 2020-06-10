@@ -1,6 +1,10 @@
-const entityPath = 'dist/entity/*.js';
+import * as path from 'path';
 
-module.exports = {
+const ext = path.extname(__filename);
+const dir = (ext === '.js') ? 'dist' : 'src';
+const entityPath = `${dir}/entity/*.js`;
+
+export default {
   "type": "postgres",
   "host": "localhost",
   "port": 5432,
