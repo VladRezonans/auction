@@ -1,2 +1,2 @@
 const config = require('./src/db-config');
-module.exports = config;
+module.exports = config['default'];
