@@ -2,7 +2,7 @@ import * as path from 'path';
 
 const ext = path.extname(__filename);
 const dir = (ext === '.js') ? 'dist' : 'src';
-const entityPath = `${dir}/entity/*.js`;
+const entityPath = `${dir}/entity/*.{ts,js}`;
 
 export default {
   "type": "postgres",
