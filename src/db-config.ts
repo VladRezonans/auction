@@ -14,7 +14,7 @@ export default {
   "synchronize": false,
   "logging": true,
   "entities": [entityPath],
-  "migrations": ['/migrations/*.{ts,js}'],
+  "migrations": ['src/migrations/*.ts'],
   "cli": {
     "migrationsDir": "src/migrations"
   }

@@ -19,4 +19,8 @@ export class UserService {
         Object.assign(user, body);
         return await this.repository.save(user);
     }
+
+    async findOne(email: string): Promise<User | undefined> {
+        return this.repository.findOne({ where: { email: email }});
+    }
 }
