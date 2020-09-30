@@ -3,7 +3,7 @@ import { Entity, Index, Column, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
 export class Lot {
     @PrimaryGeneratedColumn()
-    public id: string;
+    public id: number;
 
     @Index()
     @Column()
