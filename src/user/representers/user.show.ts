@@ -1,6 +1,7 @@
 import { User } from '../../entity/user.entity';
 
 export class ShowUser {
+    id: string;
     email: string;
     phone: number;
     firstName: string;
@@ -8,6 +9,7 @@ export class ShowUser {
     birthDay?: Date;
 
     constructor(user: User) {
+        this.id = user.id;
         this.email = user.email;
         this.phone = user.phone;
         this.firstName = user.firstName;
