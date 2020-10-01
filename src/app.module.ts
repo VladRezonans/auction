@@ -7,6 +7,7 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { LotsModule } from './lots/lots.module';
 import { BidsModule } from './bids/bids.module';
+import { OrdersModule } from './orders/orders.module';
 import dbConfig from './db-config';
 
 @Module({
@@ -16,6 +17,7 @@ import dbConfig from './db-config';
     AuthModule,
     LotsModule,
     BidsModule,
+    OrdersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
