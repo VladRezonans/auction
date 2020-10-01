@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Param, Body, UseGuards, Request } from '@nestjs/common';
+import { Controller, Get, Post, Param, Body, UseGuards, Request, Query } from '@nestjs/common';
 import { CreateLotDto } from './validators/createLot.dto';
 import { LotsService } from './lots.service'
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
@@ -15,8 +15,8 @@ export class LotsController {
 
     @UseGuards(JwtAuthGuard)
     @Get()
-    index() {
-        return this.lotsService.getList();
+    index(@Query() { take, skip }) {
+        return this.lotsService.getList(take, skip);
     }
 
     @UseGuards(JwtAuthGuard)

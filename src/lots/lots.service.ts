@@ -18,9 +18,9 @@ export class LotsService {
         return new ShowLot(await this.repository.save(lot));
     }
 
-    async getList(): Promise<ShowLot[]> {
-        const lots = await this.repository.find();
-        return lots.map(lot => new ShowLot(lot));
+    async getList(take: number = 10, skip: number = 0): Promise<{ lots: ShowLot[], total: number }> {
+        const [lots, total] = await this.repository.findAndCount({ take, skip });
+        return { lots: lots.map(lot => new ShowLot(lot)), total };
     }
 
     async get(id: number): Promise<ShowLot> {

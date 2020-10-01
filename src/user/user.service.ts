@@ -10,12 +10,12 @@ import { ShowUser } from './representers/user.show';
 export class UserService {
     constructor(@InjectRepository(User) private readonly repository: Repository<User>) {}
 
-    async getUsers(): Promise<ShowUser[]> {
-        const users = await this.repository.find();
-        return users.map(user => new ShowUser(user));
+    async getList(take: number = 10, skip: number = 0): Promise<{ users:ShowUser[], total: number }> {
+        const [users, total] = await this.repository.findAndCount({ take, skip });
+        return { users: users.map(user => new ShowUser(user)), total };
     }
 
-    async getUser(userId: number): Promise<ShowUser> {
+    async get(userId: number): Promise<ShowUser> {
         const user = await this.repository.findOne(userId);
         return new ShowUser(user);
     }

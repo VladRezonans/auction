@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { LotsModule } from './lots/lots.module';
+import { BidsModule } from './bids/bids.module';
 import dbConfig from './db-config';
 
 @Module({
@@ -14,6 +15,7 @@ import dbConfig from './db-config';
     UserModule,
     AuthModule,
     LotsModule,
+    BidsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
