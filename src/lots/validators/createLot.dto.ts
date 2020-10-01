@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsOptional, IsNumber, IsString, IsDateString } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsNumber, IsString, IsDateString, Min } from 'class-validator';
 
 export class CreateLotDto {
   @IsNotEmpty()
@@ -14,6 +14,7 @@ export class CreateLotDto {
 
   @IsNotEmpty()
   @IsNumber()
+  @Min(0)
   estimatedPrice: number;
 
   @IsNotEmpty()

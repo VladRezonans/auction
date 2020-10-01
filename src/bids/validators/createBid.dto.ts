@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber } from 'class-validator';
+import { IsNotEmpty, IsNumber, Min } from 'class-validator';
 
 export class CreateBidDto {
     @IsNotEmpty()
@@ -7,5 +7,6 @@ export class CreateBidDto {
 
     @IsNotEmpty()
     @IsNumber()
+    @Min(0)
     proposedPrice: number;
 }
