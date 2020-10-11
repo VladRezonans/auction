@@ -3,16 +3,16 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Bid } from '../entity/bid.entity';
 import { Lot } from '../entity/lot.entity';
-import { Order } from '../entity/order.entity';
 import { ShowBid } from './representers/bid.show';
 import { CreateBidDto } from './validators/createBid.dto';
+import { OrdersService } from '../orders/orders.service'
 
 @Injectable()
 export class BidsService {
     constructor(
         @InjectRepository(Bid) private readonly repositoryBid: Repository<Bid>,
         @InjectRepository(Lot) private readonly repositoryLot: Repository<Lot>,
-        @InjectRepository(Order) private readonly repositoryOrder: Repository<Order>
+        private readonly ordersService: OrdersService,
     ) {}
 
     async create(body: CreateBidDto, userId: number): Promise<ShowBid | void> {
@@ -47,9 +47,7 @@ export class BidsService {
 
         if (lot.estimatedPrice <= bid.proposedPrice) {
             lot.status = 2;
-            const order = new Order();
-            Object.assign(order, { lotId: lot.id, userId: bid.userId, arrivalLocation: ' ' });
-            this.repositoryOrder.save(order);
+            this.ordersService.create(lot, bid);
         }
 
         if (lot.currentPrice < bid.proposedPrice) {

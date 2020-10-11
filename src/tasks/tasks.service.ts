@@ -4,14 +4,14 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Lot } from '../entity/lot.entity';
 import { Bid } from '../entity/bid.entity';
-import { Order } from '../entity/order.entity';
+import { OrdersService } from '../orders/orders.service'
 
 @Injectable()
 export class TasksService {
     constructor(
         @InjectRepository(Lot) private readonly repositoryLot: Repository<Lot>,
         @InjectRepository(Bid) private readonly repositoryBid: Repository<Bid>,
-        @InjectRepository(Order) private readonly repositoryOrder: Repository<Order>
+        private readonly ordersService: OrdersService,
     ) {}
 
     @Cron('30 * * * * *')
@@ -36,8 +36,6 @@ export class TasksService {
         const bid = await this.repositoryBid.findOne(
             { where: `"lotId"::INTEGER = ${lot.id} AND "proposedPrice" = (SELECT max("proposedPrice") FROM bid WHERE "lotId"::INTEGER = ${lot.id})` }
         );
-        const order = new Order();
-        Object.assign(order, { lotId: lot.id, userId: bid.userId, arrivalLocation: ' ' });
-        this.repositoryOrder.save(order);
+        this.ordersService.create(lot, bid);
     }
 }
